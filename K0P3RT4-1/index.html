@@ -17,7 +17,40 @@ body{
   font-family:Arial,sans-serif;
   padding:16px;
 }
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:9999;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
 
+.modal-content{
+  background:#222;
+  color:#f5f2ec;
+  max-width:500px;
+  width:100%;
+  padding:24px;
+  border-radius:12px;
+  text-align:left;
+}
+
+.modal-content h2{
+  margin-bottom:16px;
+}
+
+.modal-content button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
 .wrap{
   width:100%;
   max-width:480px;
@@ -90,15 +123,27 @@ p span a{
    ">
    Magnes</a> od 25.07
 
-  <span>
-    <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">
-      @3doodle_pl
-    </a>
-  </span>
+ <span>
+  kod z naklejki ·
+  <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">
+    @3doodle_pl
+  </a>
+  ·
+  <a href="#" onclick="openRules(); return false;">
+    Zasady
+  </a>
+</span>
 </p>
 </div>
 
 <script>
+  function openRules(){
+  document.getElementById("rulesModal").style.display = "flex";
+}
+
+function closeRules(){
+  document.getElementById("rulesModal").style.display = "none";
+}
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("promoVideo");
   video.muted = true;
@@ -111,6 +156,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<div id="rulesModal" class="modal">
+  <div class="modal-content">
+    <h2>Zasady</h2>
 
+    <p>
+      1. Każdy kod można wykorzystać tylko raz.<br><br>
+
+      2. Kod należy wysłać w wiadomości prywatnej na Instagramie
+      do @3doodle_pl.<br><br>
+
+      3. Magnes można odebrać wyłącznie po poprawnej weryfikacji kodu.<br><br>
+
+      4. Organizator zastrzega sobie prawo do odmowy realizacji
+      kodów niezgodnych z zasadami akcji.
+    </p>
+
+    <button onclick="closeRules()">Rozumiem</button>
+  </div>
+</div>
 </body>
 </html>
