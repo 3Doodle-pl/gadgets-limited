@@ -40,7 +40,15 @@ p{
 }
 
 .highlight{
+  color:#f5f2ec;
   text-decoration:underline;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.highlight:visited{
+  color:#f5f2ec;
+}
 }
 
 p span{
@@ -68,12 +76,26 @@ p span a{
     <source src="magnet3Doodle.mp4" type="video/mp4">
   </video>
 
-  <p>
-    Zdobądź ten <b><u><a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">Magnes</u></b></a> od 25.07
-    <span>
-      kod z naklejki · @3doodle_pl
-    </span>
-  </p>
+<p>
+  Zdobądź ten
+  <a href="#"
+     class="highlight"
+     onclick="
+       navigator.clipboard.writeText('Mój tajny kod: K0P3RT4-1');
+       window.open('https://www.instagram.com/direct/t/117367246317613/', '_blank');
+       return false;
+     ">
+     Magnes
+  </a>
+  od 25.07
+
+  <span>
+    kod z naklejki ·
+    <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">
+      @3doodle_pl
+    </a>
+  </span>
+</p>
 </div>
 
 <script>
