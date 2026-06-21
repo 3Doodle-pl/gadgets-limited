@@ -6,11 +6,7 @@
 <title>3Doodle</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   background:#1a1a1a;
@@ -43,6 +39,10 @@ p{
   line-height:1.5;
 }
 
+.highlight{
+  text-decoration:underline;
+}
+
 p span{
   display:block;
   color:#999;
@@ -51,14 +51,13 @@ p span{
   margin-top:6px;
 }
 
-@media (max-width: 480px){
-  .wrap{
-    max-width:100%;
-  }
+p span a{
+  color:#999;
+}
 
-  video{
-    border-radius:10px;
-  }
+@media (max-width:480px){
+  .wrap{max-width:100%;}
+  video{border-radius:10px;}
 }
 </style>
 </head>
@@ -70,8 +69,11 @@ p span{
   </video>
 
   <p>
-    Zdobądź ten <u>Magnes</u> od 25.07
-    <span>kod z naklejki · @3doodle_pl</span>
+    Zdobądź ten <span class="highlight">Magnes</span> od 25.07
+    <span>
+      kod z naklejki ·
+      <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">@3doodle_pl</a>
+    </span>
   </p>
 </div>
 
