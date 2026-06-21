@@ -106,7 +106,7 @@ p span a{
 
 <div class="wrap">
   <video id="promoVideo" autoplay muted loop playsinline webkit-playsinline>
-    <source src="magnet3Doodle.mp4" type="video/mp4">
+    <source src="keychain.mp4" type="video/mp4">
   </video>
 
 <p>
@@ -121,7 +121,7 @@ p span a{
      });
      return false;
    ">
-   Magnes</a> od 25.07
+   Brelok</a> od 25.07
 
 <span>
   <br>
