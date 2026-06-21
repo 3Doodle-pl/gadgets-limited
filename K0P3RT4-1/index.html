@@ -79,13 +79,17 @@ p span a{
 <p>
   Zdobądź ten
   <a href="#"
-     class="highlight"
-     onclick="
-       navigator.clipboard.writeText('Mój tajny kod: K0P3RT4-1');
-       window.open('https://instagram.com/3doodle_pl/', '_blank');
-       return false;
-     ">
-     Magnes</a> od 25.07
+   class="highlight"
+   onclick="
+     navigator.clipboard.writeText('Mój tajny kod: K0P3RT4-1').then(() => {
+       if (confirm('Twój tajny kod został skopiowany do schowka. Czy chcesz otworzyć Instagram żeby go użyć?')) {
+         window.open('https://instagram.com/3doodle_pl/', '_blank');
+       }
+     });
+     return false;
+   ">
+   Magnes
+</a> od 25.07
 
   <span>
     <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">
