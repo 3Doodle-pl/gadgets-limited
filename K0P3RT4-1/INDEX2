@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3Doodle</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:#1a1a1a;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,sans-serif;
+  padding:16px;
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:9999;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-content{
+  background:#222;
+  color:#f5f2ec;
+  max-width:500px;
+  width:100%;
+  padding:24px;
+  border-radius:12px;
+  text-align:left;
+}
+
+.modal-content h2{
+  margin-bottom:16px;
+}
+
+.modal-content button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.wrap{
+  width:100%;
+  max-width:480px;
+  text-align:center;
+}
+
+video{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+}
+
+p{
+  color:#f5f2ec;
+  font-weight:bold;
+  margin-top:1.25rem;
+  font-size:clamp(16px,4vw,18px);
+  line-height:1.5;
+}
+
+.highlight{
+  color:#f5f2ec;
+  text-decoration:underline;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.highlight:visited{
+  color:#f5f2ec;
+}
+}
+
+p span{
+  display:block;
+  color:#999;
+  font-size:clamp(13px,3.5vw,15px);
+  font-weight:normal;
+  margin-top:6px;
+}
+
+p span a{
+  color:#999;
+}
+
+@media (max-width:480px){
+  .wrap{max-width:100%;}
+  video{border-radius:10px;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <video id="promoVideo" autoplay muted loop playsinline webkit-playsinline>
+    <source src="magnet3Doodle.mp4" type="video/mp4">
+  </video>
+
+<p>
+  Zdobądź ten
+  <a href="#"
+   class="highlight"
+   onclick="
+     navigator.clipboard.writeText('Mój tajny kod: K0P3RT4-1').then(() => {
+       if (confirm('Twój tajny kod został skopiowany do schowka. Czy chcesz otworzyć Instagram żeby go użyć?')) {
+         window.open('https://instagram.com/3doodle_pl/', '_blank');
+       }
+     });
+     return false;
+   ">
+   Magnes</a> od 25.07
+
+<span>
+  <br>
+  <a href="https://instagram.com/3doodle_pl/" target="_blank" rel="noopener noreferrer">
+    @3Doodle
+  </a>
+  ·
+  <a href="#" onclick="openRules(); return false;">
+    Zasady promocji
+  </a>
+</span>
+</p>
+</div>
+
+<script>
+  function openRules(){
+  document.getElementById("rulesModal").style.display = "flex";
+}
+
+function closeRules(){
+  document.getElementById("rulesModal").style.display = "none";
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("promoVideo");
+  video.muted = true;
+
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      document.addEventListener("touchstart", () => video.play(), { once: true });
+    });
+  }
+});
+</script>
+<div id="rulesModal" class="modal">
+  <div class="modal-content">
+    <h2>Zasady promocji</h2>
+
+    <p>
+      1. Kod można wykorzystać tylko raz na konto.<br><br>
+
+      2. Kod należy wysłać w wiadomości prywatnej na Instagramie
+      do @3doodle_pl.<br><br>
+
+      3. Kod stanowi możliwość odebrania upominku GWP (Gift With Purchase) przy zamówieniach za min. 15zł*<br><br>
+
+      4. Pula upominków jest ograniczona.<br><br>
+
+      *koszt wysyłki nie jest liczony do kwoty minimalnej zamówienia
+    </p>
+
+    <button onclick="closeRules()">Rozumiem</button>
+  </div>
+</div>
+</body>
+</html>
