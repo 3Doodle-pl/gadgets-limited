@@ -6,49 +6,102 @@
 <title>3Doodle</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0d0d0d;
+    height: 100%;
+    width: 100%;
+  }
   body {
-    background: #1a1a1a;
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
-  }
-  .wrap {
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
-  }
-  video {
-    width: 100%;
-    border-radius: 12px;
-    display: block;
-  }
-  p {
     color: #f5f2ec;
-    font-weight: bold;
-    margin-top: 1.25rem;
-    font-size: 18px;
-    line-height: 1.5;
+    text-align: center;
+    padding: 1.5rem;
   }
-  p span {
-    display: block;
-    color: #999;
-    font-size: 15px;
-    font-weight: normal;
+  h1 {
+    font-weight: bold;
+    font-size: clamp(22px, 5vw, 36px);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+  }
+  .countdown {
+    display: flex;
+    gap: clamp(10px, 3vw, 28px);
+  }
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 64px;
+  }
+  .num {
+    font-size: clamp(36px, 9vw, 64px);
+    font-weight: bold;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    font-size: clamp(11px, 2.5vw, 14px);
+    color: #888;
     margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .sep {
+    font-size: clamp(28px, 7vw, 52px);
+    font-weight: bold;
+    color: #444;
+    align-self: flex-start;
+    margin-top: -4px;
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <video autoplay muted loop playsinline>
-    <source src="magnet3Doodle.mp4" type="video/mp4">
-  </video>
-  <p>
-    Zdobądź ten magnes od 25.07
-    <span>kod z naklejki · @3doodle_pl</span>
-  </p>
+<h1>Wróć gdy przyjdzie pora...</h1>
+
+<div class="countdown" id="countdown">
+  <div class="unit"><span class="num" id="dd">00</span><span class="label">dni</span></div>
+  <span class="sep">:</span>
+  <div class="unit"><span class="num" id="hh">00</span><span class="label">godz</span></div>
+  <span class="sep">:</span>
+  <div class="unit"><span class="num" id="mm">00</span><span class="label">min</span></div>
+  <span class="sep">:</span>
+  <div class="unit"><span class="num" id="ss">00</span><span class="label">sek</span></div>
 </div>
+
+<script>
+  var target = new Date("2026-07-25T00:00:00").getTime();
+
+  function pad(n) { return n.toString().padStart(2, '0'); }
+
+  function tick() {
+    var now = new Date().getTime();
+    var diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('dd').textContent = '00';
+      document.getElementById('hh').textContent = '00';
+      document.getElementById('mm').textContent = '00';
+      document.getElementById('ss').textContent = '00';
+      return;
+    }
+
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('dd').textContent = pad(d);
+    document.getElementById('hh').textContent = pad(h);
+    document.getElementById('mm').textContent = pad(m);
+    document.getElementById('ss').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
 </body>
 </html>
